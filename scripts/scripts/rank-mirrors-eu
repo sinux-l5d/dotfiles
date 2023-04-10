@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -ue
+
+COUNTRIES=(BE DK FI FR DE IS IE IT LV LT LU NL PL PT RO ES GB)
+URL="https://archlinux.org/mirrorlist/?protocol=https&ip_version=4"
+
+for COUNTRY in "${COUNTRIES[@]}"; do
+    URL="${URL}&country=${COUNTRY}"
+done
+
+MIRRORLIST=$(curl -s "${URL}" | sed -e 's/^#Server/Server/' -e '/^#/d')
+
+sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-`date +%Y-%m-%d`.bckp
+
+echo "$MIRRORLIST" | rankmirrors -n 5 --max-time 5 - | sudo tee /etc/pacman.d/mirrorlist
