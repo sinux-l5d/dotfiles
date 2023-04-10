@@ -1,0 +1,29 @@
+#!/bin/sh
+
+if ! command -v gum >/dev/null 2>&1; then
+  echo "gum is not installed"
+  exit 1
+fi
+
+TYPE=$(gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert" "ci")
+SCOPE=$(gum input --placeholder "scope")
+
+# Since the scope is optional, wrap it in parentheses if it has a value.
+test -n "$SCOPE" && SCOPE="($SCOPE)"
+
+ISBREAKING=$(gum confirm "Is this a breaking change?" && echo -n "!" || echo -n)
+
+SUMMARY=$(gum input --prompt "$TYPE$SCOPE$ISBREAKING: " --placeholder "Summary of this change" --width 50)
+SUMMARY="$TYPE$SCOPE$ISBREAKING: $SUMMARY"
+gum style "$SUMMARY" --margin "0 1"
+
+DESCRIPTION=$(gum write --placeholder "Details of this change (CTRL+D to finish)")
+test -n "$DESCRIPTION" && gum style "$DESCRIPTION" --margin "1 1"
+
+# Breaking change footer
+BREAKING=""
+test -n "$ISBREAKING" && BREAKING=$(gum input --prompt "BREAKING CHANGE: " --placeholder "Optional text of what broke")
+test -n "$BREAKING" && BREAKING="BREAKING CHANGE: $BREAKING" && gum style "$BREAKING" --margin "0 1"
+
+# Commit these changes if user confirms
+gum confirm "Commit changes?" && git commit -m "$SUMMARY" -m "$DESCRIPTION" -m "$BREAKING"

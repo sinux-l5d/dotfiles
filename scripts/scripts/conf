@@ -1,0 +1,38 @@
+#!/bin/bash
+
+file=""
+
+case $1 in
+    vim|vi|nvim)
+        file=$XDG_CONFIG_HOME/nvim/init.vim
+        # If file don't exists, open init.lua
+        [ ! -f "$file" ] && file=$XDG_CONFIG_HOME/nvim/init.lua;;
+    aw|awesome|awesomewm)
+        if [ -z $2 ]
+        then
+            file=$XDG_CONFIG_HOME/awesome/rc.lua
+        else
+            file=$XDG_CONFIG_HOME/awesome/$2
+        fi;;
+    ala|alacritty)
+        file=$XDG_CONFIG_HOME/alacritty.yml;;
+    ze|zellij)
+        file=$XDG_CONFIG_HOME/zellij/config.kdl;;
+    z|zsh)
+        file=$HOME/.zshrc;;
+    ssh)
+        file=$HOME/.ssh/config;;
+    install)
+        file=$HOME/files/projects/sinux-base/required_packages.sh;;
+    conf)
+        file=$BASH_SOURCE;;
+    '')
+        echo "USAGE: conf <config name>";exit 0;;
+esac
+
+if [ ! $file = "" ]
+then
+    $EDITOR $file
+else
+    exit 1
+fi
