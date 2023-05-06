@@ -22,8 +22,8 @@ case $1 in
         file=$HOME/.zshrc;;
     ssh)
         file=$HOME/.ssh/config;;
-    install)
-        file=$HOME/files/projects/sinux-base/required_packages.sh;;
+    git)
+        file=$HOME/.gitconfig;;
     conf)
         file=$BASH_SOURCE;;
     '')
