@@ -128,7 +128,9 @@ export SAM_CLI_TELEMETRY=0
 export CAPACITOR_ANDROID_STUDIO_PATH=/opt/android-studio/bin/studio.sh
 export PATH
 
-if command -v gum &> /dev/null && command -v zellij &> /dev/null && [[ -z "$ZELLIJ" ]] && [[ "$TERM_PROGRAM" != "vscode" ]]; then
+if command -v gum &> /dev/null && command -v zellij &> /dev/null && [[ -z "$ZELLIJ" ]] \
+    && [[ "$TERM_PROGRAM" != "vscode" ]] \
+    && [[ "$TERM_PROGRAM" != "idea" ]]; then
     # replace newline with space with awk
     sessions=($(zellij list-sessions))
     if [[ -z $sessions ]]; then
