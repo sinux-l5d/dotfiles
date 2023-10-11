@@ -1,7 +1,7 @@
 [user]
 	name = Simon LEONARD
 	email = git-1001af4@sinux.sh
-	signingkey = 0E6E27BED40C35CBFA4D89C613A3C7595E3B99B6
+	signingkey = C97A069F38BDB578263F7BCDE51D60C91F6BD4B3
 [core]
 	autocrlf = input
 [pull]

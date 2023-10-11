@@ -1,0 +1,26 @@
+#!/usr/bin/env zsh
+
+COMMANDS="
+aria2c
+bat
+br/broot
+downgrade
+duf
+eza
+fd
+gh
+gum
+jc/jq
+sponge
+ts
+ncdu
+nvtop
+pv
+rg
+stow
+tldr
+"
+
+COMMAND=$(echo -n $COMMANDS | shuf -n 1)
+
+echo "Command of the day is \`${COMMAND}\`! Remember its use?"
