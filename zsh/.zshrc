@@ -111,10 +111,10 @@ zstyle ':completion:*' expand prefix suffix
 setopt COMPLETE_ALIASES
 
 # Broot
-source /home/sinux/.config/broot/launcher/bash/br
+[ -f "$HOME/.config/broot/launcher/bash/br" ] && source $HOME/.config/broot/launcher/bash/br
 
 # AWS
-complete -C '/usr/bin/aws_completer' aws
+#complete -C '/usr/bin/aws_completer' aws
 
 # NVM (Really slow)
 #source /usr/share/nvm/init-nvm.sh
