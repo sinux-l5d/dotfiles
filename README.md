@@ -7,9 +7,10 @@ My dotfiles are intended for my personal use and will unlikely be to your conven
 After `stow` and `make` are installed:
 
 ```bash
-# Init
-git clone git@github.com:sinux-l5d/dotfiles.git .dotfiles
-cd .dotfiles
+# Init 
+# it has to be cloned in a subdirectory of $HOME
+git clone git@github.com:sinux-l5d/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 
 # Link all config
 make
