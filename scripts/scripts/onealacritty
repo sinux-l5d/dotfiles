@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#
+set -exo pipefail
+
+win_class="Alacritty.Alacritty"
+
+desktop=$(wmctrl -d | grep '*' | cut -d ' ' -f1)
+instances_other=$(wmctrl -l -x | awk -v win_class="$win_class" -v curr_desktop="$desktop" '{if (($2 != curr_desktop || $2 == -1) && $3 == win_class) {print $1} }')
+instances_curr=$(wmctrl -l -x | awk -v win_class="$win_class" -v curr_desktop="$desktop" '{if (($2 == curr_desktop || $2 == -1) && $3 == win_class) {print $1} }')
+
+if [[ -z $instances_curr && -z $instances_other ]]; then
+    # no instance on the current desktop: open in new window on current desktop
+    alacritty
+elif [[ -z $instances_curr ]]; then
+    # instance on the current desktop: open in existing window on current desktop
+    wmctrl -xr "$win_class" -t "$desktop"
+    wmctrl -xa "$win_class" #-t "$curr_desktop"
+elif [[ -z $instances_other ]]; then
+    wmctrl -xa "$win_class" #-t "$curr_desktop"
+fi
