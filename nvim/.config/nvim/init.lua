@@ -133,7 +133,15 @@ require('lazy').setup({
   'wakatime/vim-wakatime',
 
   -- Github Copilot to complete
-  'github/copilot.vim',
+  {
+    "zbirenbaum/copilot.lua",
+    enabled = true,
+    cmd = "Copilot",
+    event = "InsertEnter",
+    -- config = function()
+    --     require("copilot").setup({})
+    -- end,
+  },
 
   -- Distraction Free Writing
   { 'folke/zen-mode.nvim', opts = {} },
@@ -465,5 +473,7 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+require("copilot").setup({})
 
 -- vim: ts=2 sts=2 sw=2 et
