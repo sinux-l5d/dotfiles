@@ -130,9 +130,10 @@ export PATH
 
 if command -v gum &> /dev/null && command -v zellij &> /dev/null && [[ -z "$ZELLIJ" ]] \
     && [[ "$TERM_PROGRAM" != "vscode" ]] \
+    && [[ "$TERM_PROGRAM" != "OpenLens" ]] \
     && [[ "$TERM_PROGRAM" != "idea" ]]; then
     # replace newline with space with awk
-    sessions=($(zellij list-sessions))
+    sessions=($(zellij list-sessions | grep -v EXITED | cut -d" " -f1 ))
     if [[ -z $sessions ]]; then
         zellij
     else
@@ -148,5 +149,5 @@ if command -v gum &> /dev/null && command -v zellij &> /dev/null && [[ -z "$ZELL
             zellij attach $session
         fi
     fi
-    exit # automatically exit the shell when zellij exits
+    exit # automatically exit the shell when ellij exits
 fi
