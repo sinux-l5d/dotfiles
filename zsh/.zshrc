@@ -135,7 +135,7 @@ if command -v gum &> /dev/null && command -v zellij &> /dev/null && [[ -z "$ZELL
     # replace newline with space with awk
     sessions=($(zellij list-sessions | grep -v EXITED | cut -d" " -f1 ))
     if [[ -z $sessions ]]; then
-        zellij --session main
+        zellij attach --create main
     else
         echo "Choose a session or create a new one:"
         session=$(gum choose "New session" "$sessions[@]" | xargs)
