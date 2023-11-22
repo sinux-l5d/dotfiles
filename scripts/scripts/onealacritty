@@ -15,8 +15,6 @@ elif [[ -z $instances_curr ]]; then
     # instance on the current desktop: open in existing window on current desktop
     wmctrl -xr "$win_class" -t "$desktop"
     wmctrl -xa "$win_class" #-t "$curr_desktop"
-    zellij --session main action new-tab
 elif [[ -z $instances_other ]]; then
     wmctrl -xa "$win_class" #-t "$curr_desktop"
-    zellij --session main action new-tab
 fi

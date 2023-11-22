@@ -125,7 +125,7 @@ setopt COMPLETE_ALIASES
 #source $HOME/src/dotgit/bin/bash_completion
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export SAM_CLI_TELEMETRY=0
-export CAPACITOR_ANDROID_STUDIO_PATH=/opt/android-studio/bin/studio.sh
+export SPACESHIP_AZURE_SHOW=false 
 export PATH
 
 if command -v gum &> /dev/null && command -v zellij &> /dev/null && [[ -z "$ZELLIJ" ]] \
@@ -135,7 +135,7 @@ if command -v gum &> /dev/null && command -v zellij &> /dev/null && [[ -z "$ZELL
     # replace newline with space with awk
     sessions=($(zellij list-sessions | grep -v EXITED | cut -d" " -f1 ))
     if [[ -z $sessions ]]; then
-        zellij attach --create main
+        zellij
     else
         echo "Choose a session or create a new one:"
         session=$(gum choose "New session" "$sessions[@]" | xargs)

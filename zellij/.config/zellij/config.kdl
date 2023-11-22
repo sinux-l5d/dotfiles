@@ -325,4 +325,3 @@ scrollback_editor "/usr/bin/nvim"
 //
 // theme_dir "/path/to/my/theme_dir"
 
-attach_to_session true
