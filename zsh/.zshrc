@@ -40,6 +40,7 @@ promptinit
 bashcompinit
 select-word-style bash
 zle -N edit-command-line
+ZSH_HIGHLIGHT_STYLES[comment]="fg=#71655a"
 
 ################
 ## KEYBINDING ##
