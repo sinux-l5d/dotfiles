@@ -16,6 +16,7 @@ zplug "plugins/fzf", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "agkozak/zsh-z"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "amyreese/zsh-titles"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
