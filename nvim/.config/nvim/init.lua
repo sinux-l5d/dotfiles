@@ -454,6 +454,8 @@ cmp.setup {
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
+      elseif vim.b._copilot_suggestion ~= nil then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes(vim.fn['copilot#Accept'](), true, true, true), '')
       else
         fallback()
       end
@@ -474,6 +476,15 @@ cmp.setup {
   },
 }
 
-require("copilot").setup({})
+require("copilot").setup({
+  suggestion = {
+    auto_trigger = true,
+    keymap = {
+      accept = "<Tab>",
+      accept_word = "<C-Right>",
+      accept_line = "<C-Down>",
+    }
+  }
+})
 
 -- vim: ts=2 sts=2 sw=2 et
