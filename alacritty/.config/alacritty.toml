@@ -1,0 +1,32 @@
+[bell]
+animation = "Ease"
+color = "0xfbf1c7"
+duration = 70
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 8.0
+
+[font.bold]
+family = "FiraCode Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "Roboto Mono"
+style = "Italic"
+
+[font.normal]
+family = "FiraCode Nerd Font Mono"
+style = "Medium"
+
+[scrolling]
+history = 50000
+
+[shell]
+program = "/bin/zsh"
+
+[window]
+dynamic_title = true
+startup_mode = "Maximized"
