@@ -83,6 +83,7 @@ alias v='nvim'
 alias ssh='TERM=xterm-color; ssh'
 alias copy='xclip -selection c'
 alias l="exa"
+alias nnn="nnn -e"
 
 #############
 ## SCRIPTS ##
@@ -92,6 +93,7 @@ alias l="exa"
 [ -d "$HOME/.dotnet" ] && PATH=$PATH:$HOME/.dotnet
 [ -d "$HOME/.local/bin" ] && PATH=$PATH:$HOME/.local/bin
 [ -d "$HOME/.gem/ruby/3.0.0/bin" ] && PATH=$PATH:$HOME/.gem/ruby/3.0.0/bin
+[ -d "$HOME/.cargo/bin" ] && PATH=$PATH:$HOME/.cargo/bin
 
 #############
 ## OPTIONS ##
@@ -153,3 +155,6 @@ if command -v gum &> /dev/null && command -v zellij &> /dev/null && [[ -z "$ZELL
     fi
     exit # automatically exit the shell when ellij exits
 fi
+
+# Created by `pipx` on 2024-01-15 09:24:52
+export PATH="$PATH:/home/sinux/.local/bin"
