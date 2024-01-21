@@ -129,7 +129,8 @@ setopt COMPLETE_ALIASES
 #source $HOME/src/dotgit/bin/bash_completion
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export SAM_CLI_TELEMETRY=0
-export SPACESHIP_AZURE_SHOW=false 
+export SPACESHIP_AZURE_SHOW=false
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"  
 export PATH
 
 if command -v gum &> /dev/null && command -v zellij &> /dev/null && [[ -z "$ZELLIJ" ]] \
