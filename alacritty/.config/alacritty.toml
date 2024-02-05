@@ -30,3 +30,4 @@ program = "/bin/zsh"
 [window]
 dynamic_title = true
 startup_mode = "Maximized"
+

@@ -15,7 +15,7 @@ case $1 in
             file=$XDG_CONFIG_HOME/awesome/$2
         fi;;
     ala|alacritty)
-        file=$XDG_CONFIG_HOME/alacritty.yml;;
+        file=$XDG_CONFIG_HOME/alacritty.toml;;
     ze|zellij)
         file=$XDG_CONFIG_HOME/zellij/config.kdl;;
     z|zsh)
