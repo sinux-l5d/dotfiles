@@ -130,32 +130,33 @@ setopt COMPLETE_ALIASES
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export SAM_CLI_TELEMETRY=0
 export SPACESHIP_AZURE_SHOW=false
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"  
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 export PATH
 
-if command -v gum &> /dev/null && command -v zellij &> /dev/null && [[ -z "$ZELLIJ" ]] \
-    && [[ "$TERM_PROGRAM" != "vscode" ]] \
-    && [[ "$TERM_PROGRAM" != "OpenLens" ]] \
-    && [[ "$TERM_PROGRAM" != "idea" ]]; then
-    # replace newline with space with awk
-    sessions=($(zellij list-sessions | grep -v EXITED | cut -d" " -f1 ))
-    if [[ -z $sessions ]]; then
-        zellij
-    else
-        echo "Choose a session or create a new one:"
-        session=$(gum choose "New session" "$sessions[@]" | xargs)
-        # If last command fail (ESC), exit
-        if [[ $? -ne 0 ]]; then
-            exit
-        fi
-        if [[ $session == "New session" ]]; then
-            zellij
-        else
-            zellij attach $session
-        fi
-    fi
-    exit # automatically exit the shell when ellij exits
-fi
+# if command -v gum &> /dev/null && command -v zellij &> /dev/null && [[ -z "$ZELLIJ" ]] \
+#     && [[ "$TERM_PROGRAM" != "vscode" ]] \
+#     && [[ "$TERM_PROGRAM" != "OpenLens" ]] \
+#     && [[ "$TERM_PROGRAM" != "idea" ]]; then
+#     # replace newline with space with awk
+#     sessions=($(zellij list-sessions | grep -v EXITED | cut -d" " -f1 ))
+#     if [[ -z $sessions ]]; then
+#         zellij
+#     else
+#         echo "Choose a session or create a new one:"
+#         session=$(gum choose "New session" "$sessions[@]" | xargs)
+#         # If last command fail (ESC), exit
+#         if [[ $? -ne 0 ]]; then
+#             exit
+#         fi
+#         if [[ $session == "New session" ]]; then
+#             zellij
+#         else
+#             zellij attach $session
+#         fi
+#     fi
+#     exit # automatically exit the shell when ellij exits
+# fi
 
 # Created by `pipx` on 2024-01-15 09:24:52
 export PATH="$PATH:/home/sinux/.local/bin"
