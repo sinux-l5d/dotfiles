@@ -3,7 +3,8 @@
 	email = git-1001af4@sinux.sh
 	signingkey = C97A069F38BDB578263F7BCDE51D60C91F6BD4B3
 [core]
-	autocrlf = input
+        # https://stackoverflow.com/a/1250133
+        autocrlf = input
 [pull]
 	rebase = true
 [init]
@@ -16,7 +17,7 @@
 [commit]
 	gpgsign = true
 [push]
-	autoSetupRemote = true
+    autoSetupRemote = true
 [fetch]
 	prune = true
 [filter "lfs"]
@@ -24,3 +25,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[rebase]
+	autoStash = true
