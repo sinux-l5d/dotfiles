@@ -24,7 +24,7 @@ style = "Medium"
 [scrolling]
 history = 50000
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/zellij"
 
 [window]
