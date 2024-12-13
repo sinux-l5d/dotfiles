@@ -16,7 +16,7 @@ all: check-stow $(STOW_TARGETS)
 # Apply Stow to all directories
 $(STOW_TARGETS):
 	@echo "Stowing $@"
-	@$(STOW) $@
+	@$(STOW) $@ --no-folding
 .PHONY: $(STOW_TARGETS)
 
 # Check if Stow is installed
