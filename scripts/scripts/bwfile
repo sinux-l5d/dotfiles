@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+ProgName=$(basename $0)
+
+sub_help(){
+    echo "Usage: $ProgName <subcommand> [options]\n"
+    echo "Subcommands:"
+    echo "    bar   Do bar"
+    echo "    baz   Run baz"
+    echo ""
+    echo "For help with each subcommand run:"
+    echo "$ProgName <subcommand> -h|--help"
+    echo ""
+}
+
+sub_get() {
+  local name
+  name="$1"
+
+  FILES=$(bw list items --search "[file] $name" | jq -c --arg name "$name" '[.[] | select(.name == ("[file] " + $name) and .notes != null and .type == 2)]')
+
+  if [[ $(echo "$FILES" | jq length) -eq 0 ]]; then
+    echo "No file found" >&2
+    exit 1
+  elif [[ $(echo "$FILES" | jq length) -gt 1 ]]; then
+    echo "Conflict. Found several entry matching \"[file] $name\"" >&2
+    exit 1
+  else
+    id=$(echo "$FILES" | jq -r '.[0].id')
+    bw get item "$id" | jq -r '.notes | @base64d'
+  fi
+}
+  
+sub_post() {
+  local filepath
+  filepath="$1"
+  name=$(basename "$filepath")
+
+  temp_file=$(mktemp)
+  # Check if there's stdin data
+  if [ -t 0 ]; then
+    cat "$filepath" > "$temp_file"
+  else
+    cat - | sponge "$temp_file"
+  fi
+
+  FILES=$(bw list items --search "[file] $name" | jq -c '[.[] | select(.notes != null and .type == 2)]')
+
+  if [[ $(echo "$FILES" | jq length) -gt 0 ]]; then
+    echo "File with name $name already exists."
+    exit 1
+  else
+    jq -n --rawfile data "$temp_file" --arg name "$name" '{"name": ("[file] " + $name), "notes": ($data | @base64), "type": 2, "secureNote": {"type": 0}}' | bw encode | bw create item > /dev/null && echo "Successfully uploaded $name" || echo "Error uploading $name" >&2
+  fi
+
+  rm "$temp_file"
+}
+  
+subcommand=$1
+case $subcommand in
+    "" | "-h" | "--help")
+        sub_help
+        ;;
+    *)
+        shift
+        bw sync > /dev/null
+        sub_${subcommand} $@
+        if [ $? = 127 ]; then
+            echo "Error: '$subcommand' is not a known subcommand." >&2
+            echo "       Run '$ProgName --help' for a list of known subcommands." >&2
+            exit 1
+        fi
+        ;;
+esac
