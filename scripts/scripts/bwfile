@@ -65,6 +65,7 @@ case $subcommand in
         ;;
     *)
         shift
+        export BW_SESSION=$(bw unlock --raw)
         bw sync > /dev/null
         sub_${subcommand} $@
         if [ $? = 127 ]; then
