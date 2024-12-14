@@ -130,7 +130,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
 
   -- Wakatime to keep track of coding sessions
-  'wakatime/vim-wakatime',
+  -- 'wakatime/vim-wakatime',
 
   -- Github Copilot to complete
   {
@@ -169,6 +169,10 @@ vim.wo.number = true
 
 -- Male relative line numbers default
 vim.wo.relativenumber = true
+
+-- Tab options
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
