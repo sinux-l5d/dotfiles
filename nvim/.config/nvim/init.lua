@@ -133,15 +133,15 @@ require('lazy').setup({
   -- 'wakatime/vim-wakatime',
 
   -- Github Copilot to complete
-  {
-    "zbirenbaum/copilot.lua",
-    enabled = true,
-    cmd = "Copilot",
-    event = "InsertEnter",
-    -- config = function()
-    --     require("copilot").setup({})
-    -- end,
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   enabled = true,
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   -- config = function()
+  --   --     require("copilot").setup({})
+  --   -- end,
+  -- },
 
   -- Distraction Free Writing
   { 'folke/zen-mode.nvim', opts = {} },
@@ -173,6 +173,7 @@ vim.wo.relativenumber = true
 -- Tab options
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
+
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -458,8 +459,8 @@ cmp.setup {
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      elseif require("copilot.suggestion").is_visible() then
-        require("copilot.suggestion").accept()
+      -- elseif require("copilot.suggestion").is_visible() then
+      --   require("copilot.suggestion").accept()
       else
         fallback()
       end
@@ -480,15 +481,15 @@ cmp.setup {
   },
 }
 
-require("copilot").setup({
-  suggestion = {
-    auto_trigger = true,
-    keymap = {
-      -- accept = "<Tab>",
-      accept_word = "<C-Right>",
-      accept_line = "<C-Down>",
-    }
-  }
-})
+-- require("copilot").setup({
+--   suggestion = {
+--     auto_trigger = true,
+--     keymap = {
+--       -- accept = "<Tab>",
+--       accept_word = "<C-Right>",
+--       accept_line = "<C-Down>",
+--     }
+--   }
+-- })
 
 -- vim: ts=2 sts=2 sw=2 et
