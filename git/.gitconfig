@@ -1,33 +1,28 @@
 [user]
-	name = Simon LEONARD
-	email = git-1001af4@sinux.sh
-	signingkey = ~/.ssh/git.pub
+    name = Simon LEONARD
+    email = git-1001af4@sinux.sh
+    signingkey = ~/.ssh/git.pub
 [core]
-        # https://stackoverflow.com/a/1250133
-        autocrlf = input
+    # https://stackoverflow.com/a/1250133
+    autocrlf = input
 [pull]
-	rebase = true
+    rebase = true
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [alias]
-	amend = commit --amend --no-edit
-	st = status -s -b
-	br = branch -a -v
-	l = log --oneline
+    amend = commit --amend --no-edit
+    st = status -s -b
+    br = branch -a -v
+    l = log --oneline
 [commit]
-	gpgsign = true
+    gpgsign = true
 [push]
     autoSetupRemote = true
 [fetch]
-	prune = true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    prune = true
 [rebase]
-	autoStash = true
+    autoStash = true
 [gpg]
-	format = ssh
+    format = ssh
 [diff]
-	external = difft
+    external = difft
