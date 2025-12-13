@@ -13,5 +13,4 @@ MIRRORLIST=$(curl -s "${URL}" | sed -e 's/^#Server/Server/' -e '/^#/d')
 
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-`date +%Y-%m-%d`.bckp
 
-set -x
 echo "$MIRRORLIST" | rankmirrors -n 5 --max-time 5 - | sudo tee /etc/pacman.d/mirrorlist
