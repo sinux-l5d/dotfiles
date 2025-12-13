@@ -12,7 +12,7 @@ source ~/.zplug/init.zsh
 
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, as:theme
 zplug "plugins/sudo", from:oh-my-zsh
-zplug "plugins/fzf", from:oh-my-zsh
+# zplug "plugins/fzf", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "agkozak/zsh-z"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
@@ -43,6 +43,8 @@ select-word-style bash
 zle -N edit-command-line
 ZSH_HIGHLIGHT_STYLES[comment]="fg=#71655a"
 
+eval "$(atuin init zsh --disable-up-arrow)"
+
 ################
 ## KEYBINDING ##
 ################
@@ -63,7 +65,7 @@ bindkey '^X^E' edit-command-line
 HISTFILE=~/.zhistory
 HISTSIZE=6000
 SAVEHIST=5000
-setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_SPACE
 setopt INTERACTIVE_COMMENTS
 setopt HIST_IGNORE_DUPS
@@ -82,8 +84,9 @@ alias vim='nvim'
 alias v='nvim'
 alias ssh='TERM=xterm-color; ssh'
 alias copy='xclip -selection c'
-alias l="exa"
-alias nnn="nnn -e"
+alias l='exa'
+alias nnn='nnn -e'
+alias hx='helix'
 
 #############
 ## SCRIPTS ##
