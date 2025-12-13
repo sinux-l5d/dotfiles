@@ -422,9 +422,7 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
-}
-
-mason_lspconfig.setup_handlers {
+  handlers = {
   function(server_name)
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
@@ -432,6 +430,7 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
     }
   end,
+  }
 }
 
 -- nvim-cmp setup
