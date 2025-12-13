@@ -31,9 +31,6 @@ zplug load
 ## BEHAVIOUR ##
 ###############
 
-# >>>> Vagrant command completion
-fpath=(/opt/vagrant/embedded/gems/2.2.19/gems/vagrant-2.2.19/contrib/zsh $fpath)
-
 # Prompt & completion
 autoload -Uz compinit promptinit bashcompinit select-word-style edit-command-line
 compinit
@@ -87,6 +84,7 @@ alias copy='xclip -selection c'
 alias l='exa'
 alias nnn='nnn -e'
 alias hx='helix'
+alias k='kubectl'
 
 #############
 ## SCRIPTS ##
@@ -97,6 +95,7 @@ alias hx='helix'
 [ -d "$HOME/.local/bin" ] && PATH=$PATH:$HOME/.local/bin
 [ -d "$HOME/.gem/ruby/3.0.0/bin" ] && PATH=$PATH:$HOME/.gem/ruby/3.0.0/bin
 [ -d "$HOME/.cargo/bin" ] && PATH=$PATH:$HOME/.cargo/bin
+[ -d "${KREW_ROOT:-$HOME/.krew}/bin" ] && PATH=$PATH:"${KREW_ROOT:-$HOME/.krew}/bin"
 
 #############
 ## OPTIONS ##
