@@ -1,7 +1,7 @@
 [user]
 	name = Simon LEONARD
 	email = git-1001af4@sinux.sh
-	signingkey = C97A069F38BDB578263F7BCDE51D60C91F6BD4B3
+	signingkey = ~/.ssh/git.pub
 [core]
         # https://stackoverflow.com/a/1250133
         autocrlf = input
@@ -27,3 +27,7 @@
 	required = true
 [rebase]
 	autoStash = true
+[gpg]
+	format = ssh
+[diff]
+	external = difft
