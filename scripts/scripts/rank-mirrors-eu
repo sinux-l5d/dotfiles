@@ -3,13 +3,13 @@
 set -ueo pipefail
 
 COUNTRIES=(BE DK FI FR DE IS IT LV LT LU NL PL PT RO ES GB)
-URL="https://archlinux.org/mirrorlist/?protocol=https&ip_version=4"
+URL="https://archlinux.org/mirrorlist/?protocol=https&ip_version=4&use_mirror_status=on"
 
 for COUNTRY in "${COUNTRIES[@]}"; do
     URL="${URL}&country=${COUNTRY}"
 done
 
-MIRRORLIST=$(curl -s "${URL}" | sed -e 's/^#Server/Server/' -e '/^#/d')
+MIRRORLIST=$(curl -s "${URL}" | sed -e 's/^#Server/Server/' -e '/^#/d' -e '/^$/d' | sed -n -e '1,50p')
 
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-`date +%Y-%m-%d`.bckp
 
