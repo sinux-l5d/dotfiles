@@ -84,6 +84,7 @@ alias hx='helix'
 alias k='kubectl'
 alias tmp='cd $(mktemp -d)'
 alias yk='ykman'
+alias zed='zeditor'
 
 #############
 ## SCRIPTS ##
@@ -94,8 +95,8 @@ alias yk='ykman'
 [ -d "$HOME/.local/bin" ] && PATH=$PATH:$HOME/.local/bin
 [ -d "$HOME/.cargo/bin" ] && PATH=$PATH:$HOME/.cargo/bin
 [ -d "${KREW_ROOT:-$HOME/.krew}/bin" ] && PATH=$PATH:"${KREW_ROOT:-$HOME/.krew}/bin"
-[ -d "$HOME/.radicle" ] && PATH=$PATH:$HOME/.radicle/bin
-
+[ -d "$HOME/.radicle/bin" ] && PATH=$PATH:$HOME/.radicle/bin
+[ -d "$HOME/.mammouth/bin" ] && PATH=$PATH:$HOME/.mammouth/bin
 
 #############
 ## OPTIONS ##
@@ -133,4 +134,5 @@ export SPACESHIP_AZURE_SHOW=false
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 export PATH
+
 
