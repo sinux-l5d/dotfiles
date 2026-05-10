@@ -26,3 +26,7 @@
     format = ssh
 [diff]
     external = difft
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed-signers
+[url "git@github.com:"]
+	insteadOf = https://github.com/
