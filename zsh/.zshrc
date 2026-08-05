@@ -85,6 +85,7 @@ alias k='kubectl'
 alias tmp='cd $(mktemp -d)'
 alias yk='ykman'
 alias zed='zeditor'
+alias cm='chezmoi'
 
 #############
 ## SCRIPTS ##
