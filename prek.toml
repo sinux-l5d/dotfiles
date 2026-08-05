@@ -1,0 +1,31 @@
+# Configuration file for `prek`, a git hook framework written in Rust.
+# See https://prek.j178.dev for more information.
+#:schema https://www.schemastore.org/prek.json
+
+[[repos]]
+repo = "local"
+hooks = [
+    {
+        id = "no-unencrypted-secrets",
+        name = "Ensure secrets file is not commited",
+        language = "system",
+        entry = "test ! -e .secrets.yaml",
+        pass_filenames = false,
+    },
+    {
+        id = "secrets-is-age",
+        name = "Ensure secrets file is in Age format",
+        language = "system",
+        entry = "chezmoi decrypt .secrets.yaml.age",
+        pass_filenames = false,
+    },
+]
+
+[[repos]]
+repo = "https://github.com/pre-commit/pre-commit-hooks"
+rev = "v6.0.0"
+hooks = [
+  { id = "trailing-whitespace" },
+  { id = "end-of-file-fixer" },
+  { id = "check-added-large-files" },
+]

@@ -1,0 +1,10 @@
+{{- if ne .chezmoi.osRelease.idLike "arch" }}
+scripts/rank-mirrors-eu
+{{- end }}
+
+{{- if ne .purpose "personal" }}
+.config/git/allowed-signers
+{{- end }}
+
+README.md
+prek.toml

@@ -1,0 +1,8 @@
+{{- $secrets := include ".secrets.yaml.age" | decrypt | fromYaml -}}
+sync_address = {{ $secrets.atuin_server | quote }}
+
+invert = true
+inline_height = 20
+
+[theme]
+name = "autumn"

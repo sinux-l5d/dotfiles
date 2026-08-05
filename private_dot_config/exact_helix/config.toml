@@ -1,0 +1,20 @@
+theme = "darcula"
+
+[editor]
+# Show currently open buffers, only when more than one exists.
+bufferline = "multiple"
+# Highlight all lines with a cursor
+cursorline = true
+# Use relative line numbers
+line-number = "relative"
+# Force the theme to show colors
+true-color = true
+
+[editor.indent-guides]
+character = "┇"
+render = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
