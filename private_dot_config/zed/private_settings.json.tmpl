@@ -1,0 +1,974 @@
+{{- $secrets := include ".secrets.yaml.age" | decrypt | fromYaml -}}
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "diff_view_style": "split",
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "agent_servers": {
+    "mistral-vibe": {
+      "type": "registry"
+    },
+    "opencode": {
+      "type": "registry",
+    },
+  },
+  "language_models": {
+    "openai_compatible": {
+      "Mammouth": {
+        "api_url": "https://api.mammouth.ai/v1",
+        "available_models": [
+          {
+            "name": "gpt-4.1",
+            "display_name": "GPT 4.1",
+            "max_tokens": 1047576,
+            "max_output_tokens": 32768,
+            "max_completion_tokens": 1047576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-4.1-mini",
+            "display_name": "GPT 4.1 Mini",
+            "max_tokens": 1047576,
+            "max_output_tokens": 32768,
+            "max_completion_tokens": 1047576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-4.1-nano",
+            "display_name": "GPT 4.1 Nano",
+            "max_tokens": 1047576,
+            "max_output_tokens": 32768,
+            "max_completion_tokens": 1047576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-4o",
+            "display_name": "GPT 4o",
+            "max_tokens": 128000,
+            "max_output_tokens": 16384,
+            "max_completion_tokens": 128000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5",
+            "display_name": "GPT 5",
+            "max_tokens": 272000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 272000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5-mini",
+            "display_name": "GPT 5 Mini",
+            "max_tokens": 272000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 272000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5-nano",
+            "display_name": "GPT 5 Nano",
+            "max_tokens": 272000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 272000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.1",
+            "display_name": "GPT 5.1",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.1-chat",
+            "display_name": "GPT 5.1 Chat",
+            "max_tokens": 128000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 128000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.1-codex",
+            "display_name": "GPT 5.1 Codex",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.1-codex-mini",
+            "display_name": "GPT 5.1 Codex Mini",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.1-codex-max",
+            "display_name": "GPT 5.1 Codex Max",
+            "max_tokens": 400000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 400000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.2",
+            "display_name": "GPT 5.2",
+            "max_tokens": 272000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 272000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.2-chat",
+            "display_name": "GPT 5.2 Chat",
+            "max_tokens": 128000,
+            "max_output_tokens": 16384,
+            "max_completion_tokens": 128000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.2-codex",
+            "display_name": "GPT 5.2 Codex",
+            "max_tokens": 272000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 272000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.3-chat",
+            "display_name": "GPT 5.3 Chat",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.3-codex",
+            "display_name": "GPT 5.3 Codex",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.4",
+            "display_name": "GPT 5.4",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.4-mini",
+            "display_name": "GPT 5.4 Mini",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gpt-5.4-nano",
+            "display_name": "GPT 5.4 Nano",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "mistral-small-3.2-24b-instruct",
+            "display_name": "Mistral Small 3.2 24b Instruct",
+            "max_tokens": 32000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "mistral-small-2603",
+            "display_name": "Mistral Small 2603",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "mistral-medium-3.1",
+            "display_name": "Mistral Medium 3.1",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "mistral-large-3",
+            "display_name": "Mistral Large 3",
+            "max_tokens": 262144,
+            "max_output_tokens": 262144,
+            "max_completion_tokens": 262144,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "codestral-2508",
+            "display_name": "Codestral 2508",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "devstral-2512",
+            "display_name": "Devstral 2512",
+            "max_tokens": 262144,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 262144,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "claude-haiku-4-5",
+            "display_name": "Claude Haiku 4.5",
+            "max_tokens": 200000,
+            "max_output_tokens": 64000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "claude-4-sonnet-20250522",
+            "display_name": "Claude 4 Sonnet",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "claude-sonnet-4-5",
+            "display_name": "Claude Sonnet 4.5",
+            "max_tokens": 200000,
+            "max_output_tokens": 64000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "claude-sonnet-4-6",
+            "display_name": "Claude Sonnet 4.6",
+            "max_tokens": 1000000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 1000000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "claude-opus-4-5",
+            "display_name": "Claude Opus 4.5",
+            "max_tokens": 200000,
+            "max_output_tokens": 64000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "claude-opus-4-6",
+            "display_name": "Claude Opus 4.6",
+            "max_tokens": 1000000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 1000000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "grok-4-0709",
+            "display_name": "Grok 4 0709",
+            "max_tokens": 256000,
+            "max_output_tokens": 256000,
+            "max_completion_tokens": 256000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "grok-4-fast-non-reasoning",
+            "display_name": "Grok 4 Fast Non Reasoning",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "grok-4-1-fast",
+            "display_name": "Grok 4 1 Fast",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "grok-4.20-beta",
+            "display_name": "Grok 4.20 Beta",
+            "max_tokens": 2000000,
+            "max_output_tokens": 2000000,
+            "max_completion_tokens": 2000000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "grok-code-fast-1",
+            "display_name": "Grok Code Fast 1",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gemini-2.5-flash-lite",
+            "display_name": "Gemini 2.5 Flash Lite",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gemini-3.1-flash-lite-preview",
+            "display_name": "Gemini 3.1 Flash Lite Preview",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gemini-2.5-flash",
+            "display_name": "Gemini 2.5 Flash",
+            "max_tokens": 1048576,
+            "max_output_tokens": 8192,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gemini-2.5-flash-image",
+            "display_name": "Gemini 2.5 Flash Image",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gemini-3-flash-preview",
+            "display_name": "Gemini 3 Flash Preview",
+            "max_tokens": 1048576,
+            "max_output_tokens": 65535,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gemini-3.1-flash-image-preview",
+            "display_name": "Gemini 3.1 Flash Image Preview",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gemini-2.5-pro",
+            "display_name": "Gemini 2.5 Pro",
+            "max_tokens": 1048576,
+            "max_output_tokens": 8192,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gemini-3-pro-image-preview",
+            "display_name": "Gemini 3 Pro Image Preview",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gemini-3.1-pro-preview",
+            "display_name": "Gemini 3.1 Pro Preview",
+            "max_tokens": 1048576,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "gemini-3.1-pro-preview-customtools",
+            "display_name": "Gemini 3.1 Pro Preview Customtools",
+            "max_tokens": 1048576,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "deepseek-r1-0528",
+            "display_name": "Deepseek R1 0528",
+            "max_tokens": 65336,
+            "max_output_tokens": 8192,
+            "max_completion_tokens": 65336,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "deepseek-v3.1-terminus",
+            "display_name": "Deepseek V3.1 Terminus",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "deepseek-v3.2",
+            "display_name": "Deepseek V3.2",
+            "max_tokens": 163840,
+            "max_output_tokens": 163840,
+            "max_completion_tokens": 163840,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "llama-4-maverick",
+            "display_name": "Llama 4 Maverick",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "llama-4-scout",
+            "display_name": "Llama 4 Scout",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "kimi-k2.5",
+            "display_name": "Kimi K2.5",
+            "max_tokens": 262144,
+            "max_output_tokens": 262144,
+            "max_completion_tokens": 262144,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "qwen3-coder",
+            "display_name": "Qwen3 Coder",
+            "max_tokens": 262100,
+            "max_output_tokens": 262100,
+            "max_completion_tokens": 262100,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "qwen3-coder-flash",
+            "display_name": "Qwen3 Coder Flash",
+            "max_tokens": 160000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "qwen3-coder-plus",
+            "display_name": "Qwen3 Coder Plus",
+            "max_tokens": 997952,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 997952,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "qwen3.5-9b",
+            "display_name": "Qwen3.5 9b",
+            "max_tokens": 256000,
+            "max_output_tokens": 256000,
+            "max_completion_tokens": 256000,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "qwen3.5-35b-a3b",
+            "display_name": "Qwen3.5 35b A3b",
+            "max_tokens": 262144,
+            "max_output_tokens": 262144,
+            "max_completion_tokens": 262144,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "qwen3.5-397b-a17b",
+            "display_name": "Qwen3.5 397b A17b",
+            "max_tokens": 262144,
+            "max_output_tokens": 262144,
+            "max_completion_tokens": 262144,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "glm-5",
+            "display_name": "Glm 5",
+            "max_tokens": 204800,
+            "max_output_tokens": 131100,
+            "max_completion_tokens": 204800,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "glm-5-turbo",
+            "display_name": "Glm 5 Turbo",
+            "max_tokens": 202800,
+            "max_output_tokens": 131100,
+            "max_completion_tokens": 202800,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "minimax-m2.7",
+            "display_name": "Minimax M2.7",
+            "max_tokens": 204800,
+            "max_output_tokens": 131100,
+            "max_completion_tokens": 204800,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "minimax-m2.7-highspeed",
+            "display_name": "Minimax M2.7 Highspeed",
+            "max_tokens": 204800,
+            "max_output_tokens": 131100,
+            "max_completion_tokens": 204800,
+            "capabilities": {
+              "tools": false,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
+    },
+  },
+  "lsp_document_colors": "inlay",
+  "inlay_hints": {
+    "show_background": false,
+    "show_parameter_hints": true,
+    "show_type_hints": true,
+    "show_value_hints": true,
+    "enabled": true,
+  },
+  "context_servers": {
+    "codebase-memory-mcp": {
+      "enabled": true,
+      "remote": false,
+      "command": "/usr/bin/codebase-memory-mcp",
+      "args": [],
+      "env": {}
+    },
+    "genkit": {
+      "enabled": true,
+      "remote": false,
+      "command": "genkit",
+      "args": ["mcp"],
+      "env": {},
+    },
+    "mcp-server-context7": {
+      "enabled": true,
+      "remote": false,
+      "settings": {
+        "context7_api_key": {{ $secrets.context7_api_key | quote }},
+      },
+    },
+  },
+  "soft_wrap": "editor_width",
+  "relative_line_numbers": "disabled",
+  "agent": {
+    "dock": "right",
+    "profiles": {
+      "plan": {
+        "default_model": {
+          "provider": "Mammouth",
+          "model": "claude-sonnet-4-5",
+          "enable_thinking": false
+        },
+        "name": "Plan",
+        "tools": {
+          "update_plan": true,
+          "terminal": false,
+          "open": true,
+          "now": true,
+          "list_directory": true,
+          "grep": true,
+          "find_path": true,
+          "fetch": true,
+          "diagnostics": true,
+          "read_file": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "codebase-memory-mcp": {
+            "tools": {
+              "trace_path": true,
+              "search_graph": true,
+              "search_code": true,
+              "query_graph": true,
+              "manage_adr": true,
+              "list_projects": true,
+              "ingest_traces": true,
+              "index_status": true,
+              "index_repository": true,
+              "get_graph_schema": true,
+              "get_code_snippet": true,
+              "get_architecture": true,
+              "detect_changes": true,
+              "delete_project": false
+            }
+          },
+          "genkit": {
+            "tools": {
+              "start_runtime": false,
+              "search_genkit_docs": true,
+              "run_flow": false,
+              "restart_runtime": true,
+              "read_genkit_docs": true,
+              "list_genkit_docs": true,
+              "list_flows": true,
+              "kill_runtime": false,
+              "get_usage_guide": true,
+              "get_trace": true
+            }
+          },
+          "mcp-server-context7": {
+            "tools": {
+              "query-docs": true,
+              "resolve-library-id": true
+            }
+          }
+        }
+      }
+    },
+    "tool_permissions": {
+      "tools": {
+        "mcp:genkit:read_genkit_docs": {
+          "default": "allow"
+        },
+        "mcp:genkit:search_genkit_docs": {
+          "default": "allow"
+        },
+        "mcp:mcp-server-context7:resolve-library-id": {
+          "default": "allow",
+        },
+        "copy_path": {
+          "default": "allow",
+        },
+        "create_directory": {
+          "default": "allow",
+        },
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^go\\s+run(\\s|$)",
+            },
+            {
+              "pattern": "^go\\s+vet(\\s|$)",
+            },
+            {
+              "pattern": "^go\\s+build(\\s|$)",
+            },
+          ],
+        },
+        "mcp:mcp-server-context7:query-docs": {
+          "default": "allow",
+        },
+      },
+    },
+    "default_profile": "plan",
+    "default_model": {
+      "provider": "Mammouth",
+      "model": "qwen3-coder",
+    },
+    "model_parameters": [],
+  },
+  "edit_predictions": {
+    "mode": "subtle",
+  },
+  "ui_font_size": 17,
+  "buffer_font_size": 17,
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "never",
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true,
+  },
+  "tab_bar": {
+    "show_nav_history_buttons": false,
+  },
+  "indent_guides": {
+    "coloring": "indent_aware",
+  },
+  "ui_font_family": "FiraCode Nerd Font Mono",
+  "buffer_font_family": "FiraCode Nerd Font Mono",
+  "git_panel": {
+    "dock": "right",
+  },
+  "theme": {
+    "mode": "system",
+    "light": "Ayu Light",
+    "dark": "Ayu Dark",
+  },
+}

@@ -1,7 +1,0 @@
-sync_address = "https://atuin.sinux.sh"
-
-invert = true
-inline_height = 20
-
-[theme]
-name = "autumn"
