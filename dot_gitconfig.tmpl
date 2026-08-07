@@ -2,13 +2,13 @@
 [user]
     name = Simon LEONARD
     email = {{ .email }}
-{{- if eq .purpose "personal" -}}
+{{- if eq .purpose "personal" }}
     signingkey = ~/.ssh/git.pub
 [gpg]
     format = ssh
 [gpg "ssh"]
     allowedSignersFile = ~/.config/git/allowed-signers
-{{- end -}}
+{{- end }}
 [core]
     # https://stackoverflow.com/a/1250133
     autocrlf = input
