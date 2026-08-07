@@ -14,4 +14,3 @@ if [ $? -ne 0 ]; then
 
   mkdir "$HOME/.linuxbrew" && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C "$HOME/.linuxbrew" && "$HOME/.linuxbrew/bin/brew" update
 fi
-
