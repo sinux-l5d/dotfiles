@@ -37,8 +37,6 @@ select-word-style bash
 zle -N edit-command-line
 ZSH_HIGHLIGHT_STYLES[comment]="fg=#71655a"
 
-eval "$(atuin init zsh --disable-up-arrow)"
-
 ################
 ## KEYBINDING ##
 ################
@@ -107,6 +105,14 @@ unsetopt beep
 ## Set
 setopt autocd
 setopt interactivecomments
+
+##############
+# INIT TOOLS #
+##############
+
+[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)" && export HOMEBREW_NO_ANALYTICS=1
+command -v atuin &> /dev/null && eval "$(atuin init zsh --disable-up-arrow)"
+command -v mise &> /dev/null && eval "$(mise activate zsh)"
 
 
 ################
