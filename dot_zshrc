@@ -96,6 +96,7 @@ command -v brew &> /dev/null && export HOMEBREW_NO_ANALYTICS=1 && source <(comma
 command -v atuin &> /dev/null && source <(command atuin init zsh --disable-up-arrow)
 command -v mise &> /dev/null && source <(command mise activate zsh)
 command -v starship &> /dev/null && source <(command starship init zsh)
+command -v zoxide &> /dev/null && source <(command zoxide init zsh)
 
 
 ################

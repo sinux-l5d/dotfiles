@@ -21,4 +21,5 @@ brew "k9s"
 brew "dive"
 brew "nuclei"
 brew "bat"
+brew "zoxide"
 EOF
