@@ -1,4 +1,3 @@
 zdharma-continuum/fast-syntax-highlighting kind:defer
 amyreese/zsh-titles
-agkozak/zsh-z
 twfksh/zsh-ssh-agent
