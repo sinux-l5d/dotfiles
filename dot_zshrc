@@ -33,8 +33,7 @@ fi
 ## BEHAVIOUR ##
 ###############
 # Prompt & completion
-autoload -Uz compinit select-word-style edit-command-line
-compinit
+autoload -Uz select-word-style edit-command-line
 select-word-style bash
 zle -N edit-command-line
 
@@ -102,6 +101,7 @@ command -v starship &> /dev/null && source <(command starship init zsh)
 ################
 ## COMPLETION ##
 ################
+autoload -U compinit && compinit
 if command -v carapace &> /dev/null; then
     zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
     source <(carapace _carapace)
