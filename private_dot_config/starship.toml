@@ -1,3 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
+
+[custom.dotfiles]
+command = 'chezmoi git status -- --porcelain | wc -l'
+when = ''' test -n "$(chezmoi git status -- --porcelain)" '''
+format = '$output [dotfiles](red bold) '
