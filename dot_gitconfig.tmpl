@@ -1,7 +1,13 @@
 {{- $secrets := include ".secrets.yaml.age" | decrypt | fromYaml -}}
+
 [user]
     name = Simon LEONARD
-    email = {{ .email }}
+{{- if eq .purpose "personal" }}
+    email = {{ $secrets.personal_git_email }}
+{{- else if eq .purpose "work" }}
+    email = {{ $secrets.work_email }}
+{{- end }}
+
 {{- if eq .purpose "personal" }}
     signingkey = ~/.ssh/git.pub
 [gpg]
