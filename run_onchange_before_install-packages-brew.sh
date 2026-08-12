@@ -2,6 +2,9 @@
 
 # Used only for cli application. Helm and Zed don't belong here, for exemple.
 
+
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
 brew bundle --file=/dev/stdin << EOF
 brew "age"
 brew "atuin"
@@ -22,4 +25,5 @@ brew "dive"
 brew "nuclei"
 brew "bat"
 brew "zoxide"
+brew "difftastic"
 EOF
