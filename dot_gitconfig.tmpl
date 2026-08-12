@@ -14,6 +14,8 @@
     format = ssh
 [gpg "ssh"]
     allowedSignersFile = ~/.config/git/allowed-signers
+[commit]
+    gpgsign = true
 {{- end }}
 [core]
     # https://stackoverflow.com/a/1250133
@@ -27,8 +29,6 @@
     st = status -s -b
     br = branch -a -v
     l = log --oneline
-[commit]
-    gpgsign = true
 [push]
     autoSetupRemote = true
 [fetch]
