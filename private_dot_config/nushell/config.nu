@@ -10,6 +10,9 @@ $env.config.history = {
   sync_on_enter: true
   isolation: true
 }
+$env.config.edit_mode = "vi"
+$env.PROMPT_INDICATOR_VI_INSERT = "□ "
+$env.PROMPT_INDICATOR_VI_NORMAL = "■ "
 
 ############
 # HOMEBREW #
@@ -39,6 +42,7 @@ try {^carapace _carapace nushell | save --force ($nu.data-dir | path join "vendo
 try {^mise activate nu | save --force ($nu.data-dir | path join "vendor/autoload/mise.nu")}
 try {^atuin init nu --disable-up-arrow | save --force ($nu.data-dir | path join "vendor/autoload/atuin.nu")}
 try {^zoxide init nushell | save --force ($nu.data-dir | path join "vendor/autoload/zoxide.nu")}
+
 
 ###########
 # ALIASES #
