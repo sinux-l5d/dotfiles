@@ -1,5 +1,3 @@
-{{- $secrets := include ".secrets.yaml.age" | decrypt | fromYaml -}}
-
 {{- $optPurposes := list "work" "personal" -}}
 {{- $purpose := promptChoiceOnce . "purpose" "Is this a personal or work machine" $optPurposes -}}
 
@@ -7,13 +5,6 @@ encryption = "age"
 
 [data]
   purpose = {{ $purpose | quote }}
-{{- if eq $purpose "personal" }}
-  email = {{ $secrets.personal_git_email | quote }}
-{{- else if eq $purpose "work" }}
-  email = {{ $secrets.work_email | quote }}
-{{- else }}
-  email = ""
-{{- end }}
 
 [hooks.read-source-state.pre]
     command = ".local/share/chezmoi/.install-homebrew.sh"
