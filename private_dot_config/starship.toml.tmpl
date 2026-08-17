@@ -1,0 +1,10 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+[custom.dotfiles]
+command = 'command git -C "{{ .chezmoi.config.sourceDir }}" status --porcelain | wc -l'
+when = '''! command git -C "{{ .chezmoi.config.sourceDir }}" diff-index --quiet HEAD'''
+description = "Uncommited changes in chezmoi managed dotfiles"
+format = '$output [dotfiles](red bold) '
+shell = ["/bin/bash"]
