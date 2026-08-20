@@ -10,11 +10,11 @@ TERM = "alacritty"
 size = 12.0
 
 [font.bold]
-family = "FiraCode Nerd Font Mono"
+family = "0xProto Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
-family = "Roboto Mono"
+family = "0xProto Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
