@@ -1,0 +1,7 @@
+[tools]
+{{- if eq .purpose "work" }}
+azure = { version = "latest", uvx_args = "--prerelease=disallow" }
+{{- end }}
+go = "1"
+kubectl = "1"
+prek = "0.4"
