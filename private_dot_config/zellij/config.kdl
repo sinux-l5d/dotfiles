@@ -18,6 +18,7 @@ plugins {
 }
 
 theme "gruvbox-dark"
+pane_frame_style "full"
 
 on_force_close "quit"
 advanced_mouse_actions false
@@ -27,3 +28,5 @@ session_name "main"
 attach_to_session true
 
 show_startup_tips false
+
+default_shell "/home/linuxbrew/.linuxbrew/bin/nu"
