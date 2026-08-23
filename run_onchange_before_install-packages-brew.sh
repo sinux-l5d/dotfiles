@@ -26,5 +26,7 @@ brew "nuclei"
 brew "bat"
 brew "zoxide"
 brew "difftastic"
+brew "gopls"
+
 cask "font-0xproto-nerd-font"
 EOF
