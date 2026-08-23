@@ -1,0 +1,33 @@
+{
+  "terminal": {
+    "shell": {
+      "program": "/home/linuxbrew/.linuxbrew/bin/nu"
+    }
+  },
+  "lsp": {
+    "bash-language-server": {
+      "binary": {
+        "enable_auto_updates": true,
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "gopls": {
+      "binary": {
+        "allow_binary_download": true,
+        "enable_auto_updates": true
+      },
+      "enable_lsp_tasks": true
+    }
+  },
+  "ui_font_family": "0xProto Nerd Font",
+  "buffer_font_family": "0xProto Nerd Font",
+  "helix_mode": true,
+  "ui_font_size": 14,
+  "buffer_font_size": 15.0,
+  "theme": {
+    "mode": "system",
+    "light": "Melange Light",
+    "dark": "Melange Dark",
+  },
+}
