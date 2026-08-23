@@ -1,3 +1,8 @@
+[general]
+import = [
+  "~/.config/alacritty/melange.toml"
+]
+
 [bell]
 animation = "Ease"
 color = "0xfbf1c7"
