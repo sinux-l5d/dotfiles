@@ -1,4 +1,7 @@
 {
+  "git_panel": {
+    "dock": "right"
+  },
   "terminal": {
     "shell": {
       "program": "/home/linuxbrew/.linuxbrew/bin/nu"
