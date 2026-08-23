@@ -52,3 +52,4 @@ alias k = kubectl
 alias yk = ykman
 alias cm = chezmoi
 alias tmp = cd (mktemp -d)
+alias "cm cd" = cd (chezmoi source-path)
