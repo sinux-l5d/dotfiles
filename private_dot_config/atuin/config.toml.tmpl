@@ -1,8 +1,16 @@
 {{- $secrets := include ".secrets.yaml.age" | decrypt | fromYaml -}}
 sync_address = {{ $secrets.atuin_server | quote }}
 
+dialect = "uk"
 invert = true
 inline_height = 20
+show_tabs = true
+enter_accept = true
+search_mode = "daemon-fuzzy"
+
+[daemon]
+enabled = true
+autostart = true
 
 [theme]
 name = "autumn"
