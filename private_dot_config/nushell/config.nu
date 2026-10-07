@@ -53,3 +53,5 @@ alias yk = ykman
 alias cm = chezmoi
 alias tmp = cd (mktemp -d)
 alias "cm cd" = cd (chezmoi source-path)
+alias "chezmoi cd" = cd (chezmoi source-path)
+
