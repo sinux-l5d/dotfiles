@@ -1,4 +1,5 @@
 {
+  "soft_wrap": "editor_width",
   "git_panel": {
     "dock": "right"
   },
@@ -8,6 +9,13 @@
     }
   },
   "lsp": {
+    "tinymist": {
+      "binary": {
+        "enable_auto_updates": true,
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
     "bash-language-server": {
       "binary": {
         "enable_auto_updates": true,
@@ -26,6 +34,9 @@
   "ui_font_family": "0xProto Nerd Font",
   "buffer_font_family": "0xProto Nerd Font",
   "helix_mode": true,
+  "vim": {
+    "use_system_clipboard": "never"
+  },
   "ui_font_size": 14,
   "buffer_font_size": 15.0,
   "theme": {
