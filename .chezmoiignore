@@ -1,9 +1,16 @@
+{{/* Only on archlinux */}}
 {{- if ne .chezmoi.osRelease.idLike "arch" }}
 scripts/rank-mirrors-eu
 {{- end }}
 
+{{/* Only on personal machines */}}
 {{- if ne .purpose "personal" }}
 .config/git/allowed-signers
+{{- end }}
+
+{{/* Only on work machines */}}
+{{- if ne .purpose "work" }}
+.config/proxychains.conf
 {{- end }}
 
 README.md
