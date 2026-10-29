@@ -1,9 +1,23 @@
 [tools]
 {{- if eq .purpose "work" }}
 azure = { version = "latest", uvx_args = "--prerelease=disallow" }
+azure-kubelogin = "latest"
+"github:JuSuperSonic/azkv" = "latest"
 {{- end }}
 go = "latest"
 kubectl = "1"
+krew = "latest"
 prek = "0.4"
 rust = "latest"
 watchexec = "latest"
+
+"krew:ctx" = "latest"
+"krew:node-shell" = "latest"
+"krew:deprecations" = "latest"
+"krew:df-pv" = "latest"
+"krew:janitor" = "latest"
+"krew:ns" = "latest"
+"krew:popeye" = "latest"
+
+[plugins]
+krew = "https://github.com/soupglasses/mise-krew"
