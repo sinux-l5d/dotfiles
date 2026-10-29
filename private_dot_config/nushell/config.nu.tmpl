@@ -13,6 +13,19 @@ $env.config.history = {
 $env.config.edit_mode = "vi"
 $env.PROMPT_INDICATOR_VI_INSERT = "□ "
 $env.PROMPT_INDICATOR_VI_NORMAL = "■ "
+$env.EDITOR = "hx"
+$env.VISUAL = "hx"
+
+$env.FZF_DEFAULT_OPTS = "--layout=reverse --height 40%"
+
+########
+# PATH #
+########
+
+{{- if eq .purpose "work" }}
+$env.PATH = ($env.PATH | append ([$nu.home-dir, ".opencode", "bin"] | path join))
+{{- end }}
+$env.PATH = ($env.PATH | append ([$nu.home-dir, ".krew", "bin"] | path join))
 
 ############
 # HOMEBREW #
@@ -29,7 +42,7 @@ if (which brew | length) > 0 {
     | prepend ($env.HOMEBREW_PREFIX | path join "sbin")
     | prepend ($env.HOMEBREW_PREFIX | path join "bin")
   )
-  $env.INFOPATH = ([($env.HOMEBREW_PREFIX | path join "share/info"), $env.INFOPATH?] | str join | str trim --right --char ':') + ':'
+  $env.INFOPATH = ([$env.HOMEBREW_PREFIX, "share", "info"] | path join | append $env.INFOPATH? | str join ':' | str trim --right --char ':')
 }
 
 ############
@@ -43,6 +56,34 @@ try {^mise activate nu | save --force ($nu.data-dir | path join "vendor/autoload
 try {^atuin init nu --disable-up-arrow | save --force ($nu.data-dir | path join "vendor/autoload/atuin.nu")}
 try {^zoxide init nushell | save --force ($nu.data-dir | path join "vendor/autoload/zoxide.nu")}
 
+#############
+# SSH AGENT #
+#############
+
+do --env {
+    let ssh_agent_file = (
+        $nu.temp-dir | path join $"ssh-agent-(whoami).nuon"
+    )
+
+    if ($ssh_agent_file | path exists) {
+        let ssh_agent_env = open ($ssh_agent_file)
+        if ($"/proc/($ssh_agent_env.SSH_AGENT_PID)" | path exists) {
+            load-env $ssh_agent_env
+            return
+        } else {
+            rm $ssh_agent_file
+        }
+    }
+
+    let ssh_agent_env = ^ssh-agent -c
+        | lines
+        | first 2
+        | parse "setenv {name} {value};"
+        | transpose --header-row
+        | into record
+    load-env $ssh_agent_env
+    $ssh_agent_env | save --force $ssh_agent_file
+}
 
 ###########
 # ALIASES #
@@ -55,3 +96,6 @@ alias tmp = cd (mktemp -d)
 alias "cm cd" = cd (chezmoi source-path)
 alias "chezmoi cd" = cd (chezmoi source-path)
 
+{{- if eq .purpose "work" }}
+alias proxy = proxychains -q -f $'($nu.home-dir)/.config/proxychains.conf'
+{{- end }}
