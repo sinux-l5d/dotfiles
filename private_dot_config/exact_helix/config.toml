@@ -10,6 +10,9 @@ line-number = "relative"
 # Force the theme to show colors
 true-color = true
 
+[editor.soft-wrap]
+enable = true
+
 [editor.indent-guides]
 character = "┇"
 render = true
