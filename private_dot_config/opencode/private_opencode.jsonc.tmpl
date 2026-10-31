@@ -1,0 +1,74 @@
+{{- $secrets := include ".secrets.yaml.age" | decrypt | fromYaml -}}
+{
+  "$schema": "https://opencode.ai/config.json",
+  "policies": [
+    {
+      "action": "provider.use",
+      "resource": "*",
+      "effect": "deny"
+    },
+{{- if eq .purpose "work" }}
+    {
+      "action": "provider.use",
+      "resource": "github-copilot",
+      "effect": "allow"
+    },
+{{- end }}
+  ],
+  "instructions": [
+    "~/.config/opencode/instructions/caveman.md",
+    "~/.config/opencode/instructions/graphify.md",
+  ],
+  "plugins": [
+    "@dietrichgebert/ponytail",
+  ],
+  "mcp": {
+    "servers": {
+{{- if eq .purpose "work" }}
+      "context7": {
+        "type": "local",
+        "command": ["context7-proxied"],
+        "environment": {
+          "CONTEXT7_API_KEY": "{{ $secrets.context7_api_key }}",
+        }
+      },
+{{- else if eq .purpose "purpose" }}
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp",
+        "headers": {
+          "Authorization": "Bearer {{ $secrets.context7_api_key }}"
+        },
+      },
+{{- end }}
+      "kubernetes": {
+        "type": "local",
+        "command": ["npx", "-y", "kubernetes-mcp-server@latest", "--config", "{env:HOME}/.config/opencode/kubernetes-mcp-server.toml"],
+      },
+      "opentofu": {
+        "type": "remote",
+        "url": "https://mcp.opentofu.org/mcp",
+      },
+      "gh_grep": {
+        "type": "remote",
+        "url": "https://mcp.grep.app",
+      },
+      "nushell": {
+        "type": "local",
+        "command": ["nu", "--mcp"],
+      },
+      "golang": {
+        "type": "local",
+        "command": ["gopls", "mcp"],
+      },
+{{- if eq .purpose "work" }}
+      "logseq": {
+        "type": "remote",
+        "url": "http://127.0.0.1:12315/mcp",
+        "oauth": false,
+        "headers": { "Authorization": "Bearer {{ $secrets.logseq_token }}" },
+      },
+{{- end }}
+    }
+  }
+}
