@@ -11,21 +11,29 @@ $env.config.history = {
   isolation: true
 }
 $env.config.edit_mode = "vi"
-$env.PROMPT_INDICATOR_VI_INSERT = "□ "
-$env.PROMPT_INDICATOR_VI_NORMAL = "■ "
-$env.EDITOR = "hx"
-$env.VISUAL = "hx"
 
-$env.FZF_DEFAULT_OPTS = "--layout=reverse --height 40%"
+load-env {
+  PROMPT_INDICATOR_VI_INSERT: "□ ",
+  PROMPT_INDICATOR_VI_NORMAL: "■ ",
+  EDITOR: "hx",
+  VISUAL: "hx",
+  FZF_DEFAULT_OPTS: "--layout=reverse --height 40%",
+}
+
 
 ########
 # PATH #
 ########
 
+[
+  [".local", "bin"],
+  [".krew", "bin"],
 {{- if eq .purpose "work" }}
-$env.PATH = ($env.PATH | append ([$nu.home-dir, ".opencode", "bin"] | path join))
+  [".opencode", "bin"],
 {{- end }}
-$env.PATH = ($env.PATH | append ([$nu.home-dir, ".krew", "bin"] | path join))
+] | each {|| prepend $nu.home-dir | path join }
+  | append $env.PATH
+
 
 ############
 # HOMEBREW #
@@ -52,7 +60,7 @@ if (which brew | length) > 0 {
 mkdir ($nu.data-dir | path join "vendor/autoload")
 try {^starship init nu | save --force ($nu.data-dir | path join "vendor/autoload/starship.nu")}
 try {^carapace _carapace nushell | save --force ($nu.data-dir | path join "vendor/autoload/carapace.nu")}
-try {^mise activate nu | save --force ($nu.data-dir | path join "vendor/autoload/mise.nu")}
+try {^mise activate nu | save --force ($nu.data-dir | path join "vendor/autoload/01_mise.nu")}
 try {^atuin init nu --disable-up-arrow | save --force ($nu.data-dir | path join "vendor/autoload/atuin.nu")}
 try {^zoxide init nushell | save --force ($nu.data-dir | path join "vendor/autoload/zoxide.nu")}
 
