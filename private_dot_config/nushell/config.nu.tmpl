@@ -103,6 +103,7 @@ alias cm = chezmoi
 alias tmp = cd (mktemp -d)
 alias "cm cd" = cd (chezmoi source-path)
 alias "chezmoi cd" = cd (chezmoi source-path)
+alias oc = opencode
 
 {{- if eq .purpose "work" }}
 alias proxy = proxychains -q -f $'($nu.home-dir)/.config/proxychains.conf'
