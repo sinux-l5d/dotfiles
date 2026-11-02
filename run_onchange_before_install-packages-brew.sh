@@ -28,6 +28,7 @@ brew "zoxide"
 brew "difftastic"
 brew "gopls"
 brew "gh"
+brew "opencode"
 
 cask "font-0xproto-nerd-font"
 EOF

@@ -13,6 +13,12 @@
       "resource": "github-copilot",
       "effect": "allow"
     },
+{{- else if eq .purpose "personal" }}
+    {
+      "action": "provider.use",
+      "resource": "mammouth",
+      "effect": "allow",
+    },
 {{- end }}
   ],
   "instructions": [
@@ -22,6 +28,22 @@
   "plugins": [
     "@dietrichgebert/ponytail",
   ],
+{{- if eq .purpose "personal" }}
+  "provider": {
+    "mammouth": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "apiKey": "{{ $secrets.mammouthai_api_key }}",
+        "baseURL": "https://api.mammouth.ai/v1",
+      },
+      "models": {
+                "gpt-5.6-luna": {},
+                "gpt-5.6-terra": {},
+                "claude-sonnet-5-5": {}
+            }
+    },
+  },
+{{- end }}
   "mcp": {
     "servers": {
 {{- if eq .purpose "work" }}
@@ -32,7 +54,7 @@
           "CONTEXT7_API_KEY": "{{ $secrets.context7_api_key }}",
         }
       },
-{{- else if eq .purpose "purpose" }}
+{{- else if eq .purpose "personal" }}
       "context7": {
         "type": "remote",
         "url": "https://mcp.context7.com/mcp",
