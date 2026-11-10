@@ -29,6 +29,7 @@ brew "difftastic"
 brew "gopls"
 brew "gh"
 brew "opencode"
+brew "glow"
 
 cask "font-0xproto-nerd-font"
 EOF
