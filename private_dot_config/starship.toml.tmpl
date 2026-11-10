@@ -1,10 +1,20 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
+#format = "$all$custom.todo"
 
 [custom.dotfiles]
 command = 'command git -C "{{ .chezmoi.config.sourceDir }}" status --porcelain | wc -l'
 when = '''! command git -C "{{ .chezmoi.config.sourceDir }}" diff-index --quiet HEAD'''
 description = "Uncommited changes in chezmoi managed dotfiles"
 format = '$output [dotfiles](red bold) '
+shell = ["/bin/bash"]
+
+[custom.todo]
+command = '''
+rg --count-matches --no-heading --ignore-case "todo" "$(git rev-parse --show-toplevel)" | awk -F: '{ total += $NF } END { print total+0 }'
+'''
+when = '''git rev-parse --is-inside-work-tree >/dev/null 2>&1 && rg --quiet --ignore-case "todo" "$(git rev-parse --show-toplevel)"'''
+description = "TODO count in current Git repository"
+format = 'has $output [TODOs](white bold) '
 shell = ["/bin/bash"]
