@@ -1,6 +1,7 @@
 {{- $secrets := include ".secrets.yaml.age" | decrypt | fromYaml -}}
 {
   "$schema": "https://opencode.ai/config.json",
+  "lsp": true,
   "policies": [
     {
       "action": "provider.use",
@@ -24,9 +25,11 @@
   "instructions": [
     "~/.config/opencode/instructions/caveman.md",
     "~/.config/opencode/instructions/graphify.md",
+    "~/.config/opencode/instructions/core.md",
   ],
   "plugins": [
     "@dietrichgebert/ponytail",
+    "opencode-skill-creator",
   ],
 {{- if eq .purpose "personal" }}
   "provider": {
@@ -54,6 +57,30 @@
           "CONTEXT7_API_KEY": "{{ $secrets.context7_api_key }}",
         }
       },
+      "azure-mcp": {
+         "type": "local",
+         "command": [
+           "npx",
+           "-y",
+           "@azure/mcp@latest",
+           "server",
+           "start"
+         ],
+         "environment": {
+           "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": "1"
+         }
+       },
+       "azure-devops": {
+         "type": "local",
+         "command": [
+           "npx",
+           "-y",
+           "@azure-devops/mcp",
+           "IDFM-PRIM",
+           "--authentication",
+           "azcli"
+         ]
+       },
 {{- else if eq .purpose "personal" }}
       "context7": {
         "type": "remote",
@@ -75,6 +102,10 @@
         "type": "remote",
         "url": "https://mcp.grep.app",
       },
+      "firefox-devtools": {
+        "type": "local",
+        "command": ["npx", "-y", "@mozilla/firefox-devtools-mcp@latest", "--tool-preset", "developer"],
+      },
       "nushell": {
         "type": "local",
         "command": ["nu", "--mcp"],
@@ -86,7 +117,7 @@
 {{- if eq .purpose "work" }}
       "logseq": {
         "type": "remote",
-        "url": "http://127.0.0.1:12315/mcp",
+        "url": "http://172.28.48.1:12315/mcp",
         "oauth": false,
         "headers": { "Authorization": "Bearer {{ $secrets.logseq_token }}" },
       },
