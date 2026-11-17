@@ -2,11 +2,7 @@
 
 [user]
     name = Simon LEONARD
-{{- if eq .purpose "personal" }}
     email = {{ $secrets.personal_git_email }}
-{{- else if eq .purpose "work" }}
-    email = {{ $secrets.work_email }}
-{{- end }}
 
 {{- if eq .purpose "personal" }}
     signingkey = ~/.ssh/git.pub
@@ -17,6 +13,11 @@
 [commit]
     gpgsign = true
 {{- end }}
+{{- if eq .purpose "work" }}
+[includeIf "gitdir:~/local/repos/"]
+    path = ~/.config/git/work
+{{- end }}
+
 [core]
     # https://stackoverflow.com/a/1250133
     autocrlf = input

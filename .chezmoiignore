@@ -11,6 +11,7 @@ scripts/rank-mirrors-eu
 {{/* Only on work machines */}}
 {{- if ne .purpose "work" }}
 .config/proxychains.conf
+.config/git/work
 {{- end }}
 
 README.md

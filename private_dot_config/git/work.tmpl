@@ -1,0 +1,4 @@
+{{- $secrets := include ".secrets.yaml.age" | decrypt | fromYaml -}}
+
+[user]
+    email = {{ $secrets.work_email }}
