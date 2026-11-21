@@ -23,7 +23,7 @@ family = "0xProto Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
-family = "FiraCode Nerd Font Mono"
+family = "0xProto Nerd Font Mono"
 style = "Medium"
 
 [scrolling]
