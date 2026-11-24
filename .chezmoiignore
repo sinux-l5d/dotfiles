@@ -6,6 +6,7 @@ scripts/rank-mirrors-eu
 {{/* Only on personal machines */}}
 {{- if ne .purpose "personal" }}
 .config/git/allowed-signers
+.ssh/ovhcloud*
 {{- end }}
 
 {{/* Only on work machines */}}
