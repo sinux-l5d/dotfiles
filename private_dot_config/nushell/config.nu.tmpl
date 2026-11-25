@@ -25,15 +25,17 @@ load-env {
 # PATH #
 ########
 
-[
-  [".local", "bin"],
-  [".krew", "bin"],
-  ["scripts"],
+$env.PATH = (
+  [
+    [".local", "bin"],
+    [".krew", "bin"],
+    ["scripts"],
 {{- if eq .purpose "work" }}
-  [".opencode", "bin"],
+    [".opencode", "bin"],
 {{- end }}
-] | each {|| prepend $nu.home-dir | path join }
-  | append $env.PATH
+  ] | each {|| prepend $nu.home-dir | path join }
+    | append $env.PATH
+)
 
 
 ############
