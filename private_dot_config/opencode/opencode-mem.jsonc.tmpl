@@ -1,0 +1,13 @@
+{{- if eq .purpose "personal" }}
+{
+  "opencodeProvider": "mammouth",
+  "opencodeModel": "glm-5.3-flash",
+  "autoCaptureEnabled": true,
+}
+{{- else if eq .purpose "work" }}
+{
+  "opencodeProvider": "github-copilot",
+  "opencodeModel": "claude-haiku-4.5",
+  "autoCaptureEnabled": true,
+}
+{{- end }}
